@@ -1,0 +1,965 @@
+@-webkit-keyframes slide {
+    0% {
+        transform: translateY(200px)
+    }
+    to {
+        transform: translate(0)
+    }
+}
+
+@keyframes slide {
+    0% {
+        transform: translateY(200px)
+    }
+    to {
+        transform: translate(0)
+    }
+}
+
+.install-prompt {
+    position: absolute;
+    bottom: 0;
+    background: #fff;
+    box-shadow: 0 0 16px rgba(0, 0, 0, .2);
+    color: #000;
+    left: 0;
+    right: 0;
+    -webkit-animation: slide .3s 1;
+    animation: slide .3s 1;
+    padding: 20px
+}
+
+.install-prompt-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 20px
+}
+
+.install-prompt-icon {
+    margin-right: 10px;
+    border-radius: 8px
+}
+
+.install-prompt-button {
+    display: inline-block;
+    background: #06f;
+    padding: 10px 20px;
+    font-weight: 600;
+    color: #fff;
+    font-size: 14px;
+    border-radius: 4px
+}
+
+.ios-install-prompt-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: rgba(0, 0, 0, .7);
+    display: flex;
+    padding: 20px;
+    flex-direction: column;
+    justify-content: center;
+    transition: opacity .2s
+}
+
+.ios-install-prompt-wrapper.hidden {
+    opacity: 0;
+    pointer-events: none
+}
+
+.ios-install-prompt-modal {
+    background: #fff;
+    border-radius: 10px;
+    color: #000;
+    position: relative;
+    text-align: center
+}
+
+.ios-install-prompt-modal h1 {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: .5em
+}
+
+.ios-install-prompt-modal p {
+    font-size: 17px
+}
+
+.ios-install-prompt-modal .preview-app-icon-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 0 0 10px
+}
+
+.ios-install-prompt-close {
+    position: absolute;
+    top: -20px;
+    right: -10px;
+    padding: 30px;
+    font-size: 30px;
+    border-radius: 40px;
+    color: #bbb;
+    cursor: pointer
+}
+
+.ios-install-prompt-content {
+    padding: 20px 20px 30px
+}
+
+.ios-install-prompt-cta {
+    padding: 14px 20px 20px;
+    border-top: 1px solid #ddd
+}
+
+.ios-install-prompt-cta img {
+    vertical-align: -6px;
+    margin: 0 6px
+}
+
+::-webkit-scrollbar {
+    display: none
+}
+
+.status-bar-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0
+}
+
+.loading-expanded {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%
+}
+
+@-webkit-keyframes spin {
+    0% {
+        transform: rotate(0deg)
+    }
+    to {
+        transform: rotate(1turn)
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg)
+    }
+    to {
+        transform: rotate(1turn)
+    }
+}
+
+.loading-icon {
+    display: block;
+    width: 44px;
+    height: 44px;
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFgAAABYCAYAAABxlTA0AAAAAXNSR0IArs4c6QAACE1JREFUeAHtnGuT1EQUhvGOghdUvKHs4pVSS/1g+dH/6h/R8otVfhAVvJSisKuIiooKKIrX98nOG842mUwyt92dnFP1Tnc6nU7nyZnTnc7s7tuXlgT2MoGbdlnnD6g/dwcdVP4O6Tbp1lFKn/+W/pH+kq5JV6RL0mXp19G2kp23nQa8XwgOSw9KD0l3Shj9ct+myf+u47+XvhuJ7R0xX8QyT44nPio9LgHWfZgGpA7vdDOAfUbalPD6pZkvbhkn5Ov+pATYm0cnLKFSXJa5j03lbfua2iKsbEinJELJws0dXOSJ7lHjT0l4LdYEyuX/KvOLRExFxNSrEjEX4X0cz7fAMfku5TkHuld6QLpF8nl8jTElvyGdlH6SFmY+6SJOwOB0XAKsz0Na5gH6g/SjdFEC8iwGXELPI9KRUV5JDbzMEzrelbiRczdf7Dwbps0npGckRn8snofwwMWcl85JeOoiDa8mNPEtIky5LzHlm/Ge9Kk06w1WE9fNJ7leMluOWcDLEl9Xt03qPFMpPIbR/T9pmUYf1iT6d7/kPsX+8S16U6KfczGfZB6NMc16QSI2Ym4bjyWWfi4RCnaD8Q17VTJo95W+4c1vS2fZmNWIV7ManXt2pNge5QxMgP1I+k3aLYaH0q8/JWJ17DcOQjhhjv6NNNM3LTastnobx78oxYGMRoCLt56QFjpKq/1pDXD08bRESDsk0W/rYeUZLDekqePyLIC508QzpkUYHcPoON7xmcS8c7cbIYFxAW8+IhHSfC1Af0wiXEx1LdMCBu4rEnc+2h/aeF+6EAv3SJ4+fy0dlW4f9RnQXOOa9IXUG/I0gDnmJYkT+06T8rx/YpQq2ZPGNXwpAZkHGIxrI08YBHKvcNEXMCd7XorxipDAY+cH0jVprxshA5AMfnYirps84ZAbwDV3sr6An1arBH+Mk2LAPSkxY1gVIxQAmfjL8inG9TKtI3x8JXWyPoAZUY8VrTL1OiWtElxfIqGAwW1diuECz744kpJ26wqYOSEPEXGEJRx8KK1CWNBlNBqevCHxzcVz8WLEoMf0jplHq3UBTIPMdYFMHiMG4bk7tpBNJ5ZkONB5ibHHDsYsivDxidQaj7sAZvQk7hqustVXh+f2oRihkMEPzzWHg8pflVhXGWuTAPO1OC65URoi/pwhMzADJK+3mEmYBw8meDHwGw2Xb7N17Yw3gZjENGWo9pYunJBhwDjg620wIryy3gEVHCsKN7TNtGyohqciuDge49U4HWHkBmvzYNwfcxBnQGuNN1Xt1f9gzs8iUbTX4kbMjwPMwjmT6mib2jDsWD60PPPjdyTCBIIh41TJS0VbO6tM8cEUBDNQ3P/nqiQ/IMAgfyGgAHSjFzd5MHH5kMSdQkA+J6VtJ8CLUsDa8GIGvW3WBBhXj+WMmum927BVG6f1eVkyZF7wPlftCR8RpIuZ5+G1FgHdocJ1Mt1iwhwYwAiWPPFusxIwLs4TCmaoQ3pi27ry7p8fF1WPaturb9WuErB3Gi6DG28p0poJ8FTL1NVeTLoWq44D7DpDfqgwg0npWVUALNYJcJw9XNo6Lj9bCGyOwLrKujOk0YP5LZl/6sQ+wkTj4x8702oC/HaCFw72Yl4t3ee9EfB+FQLVYgqCN6e1E2AB7FsJwAimh6XKImA82HDZmYNbhajTR/njmvqxmZV5G4BtgJ74OsSVM63WyKOz8v6yslhoD/a+9GCTmJzagx2HeVirLHowsGOIYN0zrRuB+MgMZFYjK4seXC6+E7zTuhEow2kdbqMHQx4PtuUMwiQmpyyIRWdlRlZZCZhCIAM7AUOjm+HB/K2JrWYXAbPTHuzUB2TaTgCgbzRViYCpFOMwLl/fiaaDs6wmgENGD653RMDxcY8KMabUB2SmH4EIsfTWuK9fq1m7JhAh4sG4uhW9uz4gM/0IRMBMNWxArudyLsy0P4HopQAGrC0uXbos054EogeXTyM3vILu2XZWF4HowQB2/AUOIaJ8uqM8rQeB6MEs7sQ/BQBuvWjRo82sGghEwBTzisheTJqAoTKDlYD5BSXmwc5//LFVmp+9CYwDTENAJg7nYAeNKa0ETAyOXgxk/9JnylMM+7ASMDRYnQesBWAGvLQpCDQBvqJ2gGtjhS1jsWn0TOPypA8FLvPjGHvZxrPTehJo8mCa8NqmwwSw04t7wqV6kwdTztIlUFmPcLhgm/CR1oPAOMA0wZOdf87KNnUBX65ZsC9tDIE2wLy2J/Z6VQ1PZl7spz1l0yYRGBeDfRx/m+EQ4TL+QCatI4E2D6YJD3L1e36V4dGEirhAr820JgKTAHMMsRjA0dvZ5rdr+esfQWizLoA5noHN0zR7NfEYyGUIUVGaCXQFTEhgnSIuX+LRCdkkx6RdAXM4gIHqWQVlrFEAmX9MkdZAoA9gDmdgAzDHeQHInuxXTtqVZgJ9AXMccRev9bHEYEMu30xr17DNkPpSwFuBDFibwwWhhJidJgLTAsZr8WTChSF7NsFASB7Qg7dpAQOuCbKBsjBE20A2eO8bVDoLYIMiXBAePLswUMdl6g32gWQegAHI4AZEPLc0wLNoBPjBxeZ5AQYqgAENTDwaoIi8PZwb4HJlV9/mCRhawPNUDdClAZpz4tXxJpT1VmZ73oANhsEN0MRhztHktZRzE0g9E1F2tQwvWrQBkDmz4zDni8DJYy4jTpN36v3UiTauPNbZ8fwyAPsiPatoA21opGU+btPmnhgw8a5lGYAIHawvk+fm+gYbnopqsGWe7WjxmFi+q/LLBBwvHO8DNjMPe6Jhx3pt+T0BuGmkb7uoee8DrgHTNmEkejZlfcFzTFoSSAJzIfA/tMiMPrB9i4kAAAAASUVORK5CYII=) no-repeat 50%;
+    background-size: contain;
+    -webkit-animation-name: spin;
+    animation-name: spin;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+    animation-timing-function: linear
+}
+
+.loading-small .loading-icon {
+    width: 22px;
+    height: 22px
+}
+
+.icon {
+    display: inline-block;
+    height: 24px;
+    width: 24px;
+    mask-type: alpha;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    mask-position: center;
+    -webkit-mask-size: contain;
+    mask-size: contain;
+    background: #333
+}
+
+.icon-small {
+    height: 20px;
+    width: 20px
+}
+
+.icon-placeholder {
+    background: transparent;
+    -webkit-mask: none;
+    mask: none
+}
+
+.icon-send {
+    -webkit-mask-image: url(https://previewer-assets.adalo.com/static/media/send.5be1f331.svg);
+    mask-image: url(https://previewer-assets.adalo.com/static/media/send.5be1f331.svg)
+}
+
+.icon-close {
+    -webkit-mask-image: url(https://previewer-assets.adalo.com/static/media/close.777b93c6.svg);
+    mask-image: url(https://previewer-assets.adalo.com/static/media/close.777b93c6.svg)
+}
+
+.icon-exposure-plus-1 {
+    -webkit-mask-image: url(https://previewer-assets.adalo.com/static/media/exposure-plus-1.f0779043.svg);
+    mask-image: url(https://previewer-assets.adalo.com/static/media/exposure-plus-1.f0779043.svg)
+}
+
+.btn {
+    position: relative;
+    font: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .5px;
+    cursor: pointer;
+    padding: 0 25px;
+    height: 40px;
+    border: none;
+    border-radius: 50px
+}
+
+.btn-text {
+    font: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    text-transform: inherit;
+    text-decoration: underline;
+    color: inherit;
+    height: auto;
+    padding: unset;
+    border-radius: unset
+}
+
+.btn-icon,
+.btn-text {
+    background-color: transparent
+}
+
+.btn-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    height: 32px;
+    width: 32px;
+    padding: 0;
+    transition: background-color .2s ease
+}
+
+.btn-icon:focus,
+.btn-icon:hover {
+    background-color: rgba(0, 0, 0, .1)
+}
+
+.btn[disabled] {
+    cursor: not-allowed
+}
+
+.btn-loading .btn-loading-loader {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center
+}
+
+.input-wrapper>label {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    margin: 0 0 8px
+}
+
+.input-wrapper .input-group {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    justify-content: stretch;
+    background-color: #fff;
+    box-shadow: inset 0 0 0 1px #ccc;
+    border-radius: 6px;
+    height: 44px;
+    overflow: hidden
+}
+
+.input-wrapper .input-group input {
+    flex: 1 1;
+    height: 100%;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    padding: 8px;
+    font-size: 16px;
+    font-weight: 500
+}
+
+.input-wrapper .input-group .input-group-append,
+.input-wrapper .input-group .input-group-prepend {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%
+}
+
+.input-wrapper .input-group .input-group-append>*,
+.input-wrapper .input-group .input-group-prepend>* {
+    border-radius: unset
+}
+
+.modal-dimmer {
+    position: fixed;
+    background-color: hsla(0, 0%, 100%, .8);
+    cursor: pointer;
+    z-index: 0
+}
+
+.modal,
+.modal-dimmer {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw
+}
+
+.modal {
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute
+}
+
+.modal .modal-container {
+    position: relative;
+    background-color: #fff;
+    box-shadow: 0 5px 5px -3px rgba(0, 0, 0, .1), 0 8px 10px 1px rgba(0, 0, 0, .07), 0 3px 14px 2px rgba(0, 0, 0, .05);
+    border-radius: 12px;
+    overflow: hidden;
+    width: 100%;
+    max-width: 580px;
+    max-height: unset;
+    padding: 48px;
+    margin: auto;
+    z-index: 1
+}
+
+.modal .modal-container .modal-close {
+    position: absolute;
+    top: 16px;
+    right: 16px
+}
+
+.modal h1 {
+    color: #424242;
+    font-size: 22px;
+    font-weight: 500;
+    margin-bottom: 32px
+}
+
+.app-details-wrapper {
+    width: 100%;
+    max-width: 440px;
+    margin-right: 64px
+}
+
+.app-details-wrapper>* {
+    margin-bottom: 32px
+}
+
+.app-details-wrapper>:last-child {
+    margin-bottom: 0
+}
+
+.app-details {
+    border: 1px solid #ccc;
+    border-radius: 14px;
+    padding: 16px
+}
+
+.app-details>* {
+    margin-bottom: 16px
+}
+
+.app-details>:last-child {
+    margin-bottom: 0
+}
+
+.app-details-header {
+    display: flex;
+    align-items: center;
+    max-width: 100%
+}
+
+.app-details .app-details-header .app-details-header-text {
+    max-width: 100%;
+    overflow: hidden
+}
+
+.app-details .app-details-header .app-details-header-text>* {
+    margin-bottom: 4px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 100%
+}
+
+.app-details .app-details-header .app-details-header-text>:last-child {
+    margin-bottom: 0
+}
+
+.app-details .app-details-header .app-details-header-text h1 {
+    color: #424242;
+    font-weight: 600;
+    font-size: 32px
+}
+
+.app-details .app-details-header .app-details-header-text p {
+    color: #9e9e9e;
+    font-weight: 500;
+    font-size: 18px
+}
+
+.app-details .app-details-body p {
+    color: #757575;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 24px
+}
+
+.app-details .app-details-actions {
+    display: flex;
+    justify-content: flex-end
+}
+
+.qrcode-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex-direction: column
+}
+
+.qrcode-wrapper>* {
+    margin-bottom: 16px
+}
+
+.qrcode-wrapper>:last-child {
+    margin-bottom: 0
+}
+
+.qrcode-body {
+    flex: 1 1;
+    text-align: center
+}
+
+.qrcode-body>* {
+    margin-bottom: 8px
+}
+
+.qrcode-body>:last-child {
+    margin-bottom: 0
+}
+
+.qrcode-body h2 {
+    color: #424242;
+    font-weight: 600;
+    font-size: 20px
+}
+
+.qrcode-body a,
+.qrcode-body p {
+    color: #757575;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px
+}
+
+.multi-menu-trigger.expanded:after,
+.multi-menu-trigger.expanded:before {
+    display: none
+}
+
+.multi-menu-scroll-container {
+    padding: 0
+}
+
+.multi-menu-item {
+    color: #000;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 14px;
+    border-bottom: 1px solid #f5f5f5
+}
+
+.multi-menu-item:last-child {
+    border-bottom: 0
+}
+
+.multi-menu-item:hover {
+    color: #000;
+    background-color: #f5f5f5
+}
+
+.sms-prepend-icon {
+    margin: 0 0 0 8px
+}
+
+.sms-button-append {
+    height: 100%;
+    padding: 0 16px
+}
+
+@media screen and (max-width:1100px) {
+    .app-details-wrapper {
+        width: 100%;
+        max-width: 440px;
+        margin-right: 32px
+    }
+}
+
+.details-clone-button-wrapper {
+    margin-right: 15px
+}
+
+.details-clone-button,
+.details-clone-button-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: relative
+}
+
+.details-clone-button {
+    height: 40px;
+    font: inherit;
+    text-decoration: none;
+    text-transform: uppercase;
+    outline: none;
+    padding: 0 25px;
+    border-radius: 50px;
+    transition: all .2s;
+    justify-content: center;
+    border: 1px solid;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: .5px;
+    cursor: pointer
+}
+
+.color-stripe {
+    flex: 1 1;
+    display: flex;
+    flex-direction: row;
+    align-items: stretch
+}
+
+.color-stripe .color-stripe-bar {
+    flex: 1 1;
+    box-shadow: inset 0 -1px rgba(0, 0, 0, .05)
+}
+
+.error-page-wrapper {
+    padding: 20px
+}
+
+.error-page-content h1 {
+    margin-bottom: .4em
+}
+
+@media (min-width:450px) {
+    .error-page-wrapper {
+        background: #f1f1f1;
+        display: flex;
+        flex: 1 1;
+        align-items: center;
+        justify-content: center
+    }
+    .error-page-content {
+        background: #fff;
+        border-radius: 20px;
+        padding: 40px;
+        max-width: 400px
+    }
+}
+
+.preview {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #fff;
+    overflow-y: auto;
+    font-size: 14px;
+    color: #444
+}
+
+.preview,
+.preview-frame-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center
+}
+
+.preview-frame-wrapper {
+    min-height: 400px
+}
+
+.preview-frame-cover {
+    border: 20px solid #fff;
+    border-radius: 64px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none
+}
+
+.preview-frame-cover:after,
+.preview-frame-cover:before {
+    content: "";
+    position: absolute;
+    box-shadow: inset 0 0 0 2px rgba(0, 0, 0, .1)
+}
+
+.preview-frame-cover:before {
+    top: -20px;
+    left: -20px;
+    right: -20px;
+    bottom: -20px;
+    border-radius: 64px
+}
+
+.preview-frame-cover:after {
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    border-radius: 46px
+}
+
+.preview-frame-border {
+    transform-origin: 0 0;
+    background: #fff;
+    padding: 90px 20px;
+    border-radius: 50px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, .15), inset 0 0 0 2px rgba(0, 0, 0, .1)
+}
+
+.preview-frame-border.iphonex {
+    padding: 20px;
+    border-radius: 64px;
+    position: relative
+}
+
+.preview-frame-border.iphonex:before {
+    content: url(https://previewer-assets.adalo.com/static/media/iphonex-notch.964ae75e.svg);
+    position: absolute;
+    left: 50%;
+    margin-left: -110px;
+    top: 17px;
+    z-index: 10000
+}
+
+.preview-frame-border.iphonex:after {
+    content: "";
+    display: block;
+    height: 5px;
+    width: 134px;
+    background: #000;
+    border-radius: 3px;
+    position: absolute;
+    bottom: 34px;
+    left: 50%;
+    margin-left: -67px;
+    z-index: 10000
+}
+
+.preview-frame-clip {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, .1)
+}
+
+.preview-frame-border.iphonex .preview-frame-clip {
+    border-radius: 44px
+}
+
+.preview-frame {
+    box-sizing: content-box;
+    border: none
+}
+
+.preview-close {
+    display: block;
+    padding: 20px;
+    position: fixed;
+    top: 0;
+    left: 0
+}
+
+.preview-close .icon {
+    background: #fff;
+    width: 40px;
+    height: 40px;
+    -webkit-mask-size: contain;
+    mask-size: contain;
+    display: block;
+    opacity: .7;
+    transition: opacity .2s
+}
+
+.preview-close:hover .icon {
+    opacity: 1
+}
+
+.preview-size-menu {
+    position: fixed;
+    right: 30px;
+    top: 34px;
+    width: 200px
+}
+
+.preview-size-menu-inline {
+    position: static
+}
+
+.preview-app-icon {
+    width: 96px;
+    height: 96px;
+    border-radius: 17.5%;
+    display: inline-block
+}
+
+.preview-app-icon-wrapper {
+    display: block;
+    text-align: center;
+    margin-right: 16px
+}
+
+.preview-app-icon-wrapper img {
+    display: block
+}
+
+.preview-proton-attribution {
+    position: fixed;
+    bottom: 32px;
+    left: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    text-decoration: none;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 24px;
+    color: #000;
+    transition: background .2s ease, color .2s ease, border-color .2s ease
+}
+
+.preview-proton-attribution:hover {
+    background-color: #00a898;
+    border-color: #00a898;
+    color: #fff
+}
+
+.preview-proton-attribution h6 {
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    padding-right: 16px;
+    padding-top: 15px;
+    padding-bottom: 15px
+}
+
+.preview-proton-attribution .logo {
+    background-image: url(https://previewer-assets.adalo.com/static/media/adalo-circle-logo.6684fe75.svg);
+    height: 45px;
+    margin-left: -20px
+}
+
+.preview-proton-attribution .logo,
+.preview-proton-attribution .logo-white {
+    display: inline-block;
+    background-repeat: no-repeat;
+    background-position: 50%;
+    background-size: contain;
+    width: 72px
+}
+
+.preview-proton-attribution .logo-white {
+    -webkit-mask-image: url(https://previewer-assets.adalo.com/static/media/adalo-circle-logo.6684fe75.svg);
+    mask-image: url(https://previewer-assets.adalo.com/static/media/adalo-circle-logo.6684fe75.svg);
+    height: 26px;
+    margin-left: 6px;
+    margin-bottom: -2px;
+    transition: opacity .2s ease
+}
+
+.preview-proton-attribution:hover .logo-white {
+    opacity: 1
+}
+
+.preview-proton-tagline {
+    margin: 7px 0 15px;
+    display: block;
+    line-height: 1.4em
+}
+
+.top-stripe {
+    height: 4px;
+    z-index: 100000
+}
+
+.top-stripe,
+.web-preview-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0
+}
+
+.web-preview-header {
+    height: 64px;
+    box-shadow: 0 3px 5px -1px rgba(0, 0, 0, .2), 0 5px 8px 0 rgba(0, 0, 0, .14), 0 1px 14px 0 rgba(0, 0, 0, .12);
+    z-index: 1;
+    display: flex;
+    padding: 4px 20px 0;
+    flex-direction: row;
+    align-items: center
+}
+
+.web-renderer-wrapper {
+    position: fixed;
+    top: 64px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex
+}
+
+.web-preview-header-spacer {
+    flex: 1 1
+}
+
+.web-preview-header-logo {
+    width: 100px;
+    background: url(https://previewer-assets.adalo.com/static/media/logo.7ff019c0.svg) no-repeat 0;
+    height: 60px
+}
+
+.multi-menu,
+.multi-menu-wrapper-attached>.multi-menu-inner-wrapper:before {
+    background: #fff
+}
+
+.multi-menu-item-label {
+    padding-left: 16px
+}
+
+.wrapped-select.white .multi-menu {
+    background: #fff
+}
+
+.wrapped-select.white .multi-select-menu-selection {
+    font-size: 14px;
+    font-weight: 500;
+    background: #fff;
+    padding-left: 16px
+}
+
+.wrapped-select.white:not(.expanded) .multi-select-menu-selection {
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, .1);
+    border-radius: 50px
+}
+
+.wrapped-select.white.expanded .multi-select-menu-selection {
+    box-shadow: none
+}
+
+.multi-select-menu .icon {
+    margin: -8px 4px -8px -2px;
+    background-color: #9a9a9a
+}
+
+.multi-select-menu .disabled .icon {
+    opacity: .5
+}
+
+.multi-select-menu .multi-menu-item.open .icon,
+.multi-select-menu .multi-menu-item:hover .icon {
+    background-color: #fff
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box
+}
+
+#root,
+.app,
+body,
+html {
+    height: 100%
+}
+
+body {
+    font-family: -apple-system, "Segoe UI", Roboto, Ubuntu, "SF Pro Text", system-ui, "Helvetica Neue", sans-serif;
+    overflow: hidden;
+    background: #fff;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-font-smoothing: antialiased
+}
+
+.app {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0
+}
+
+.standalone {
+    height: 100vh
+}
+
+.app-border {
+    position: fixed;
+    top: -1px;
+    left: -1px;
+    right: -1px;
+    bottom: -1px;
+    border: 1px solid #000;
+    z-index: 10000;
+    pointer-events: none
+}
+
+
+/*# sourceMappingURL=main.72178f7e.chunk.css.map */

@@ -61,7 +61,7 @@ $(function() {
         //Generic swipe handler for all directions
         swipe: function(event, direction, distance, duration, fingerCount, fingerData) {
             // $(this).text("You swiped " + direction);l\
-
+            // console.log(distance);
             var pasivity = false
             for (el in event.path) {
                 if (event.path[el].id == 'jobs_slide') {
