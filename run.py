@@ -1,4 +1,4 @@
 #!flask/bin/python
-from app import app 
+from app import app
 
-app.run(host='localhost', debug = True)
+app.run(host='192.168.43.47', debug=True)
