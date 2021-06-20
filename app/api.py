@@ -113,12 +113,13 @@ def get_slides():
                     get_by_type = f"""WHERE `id_type` = {type_}"""
                     print(get_by_type)
                     zap = DB.GET(
-                        f"""SELECT DISTINCT * FROM `slides` {get_by_type}""")
+                        f"""SELECT DISTINCT * FROM `slides` {get_by_type} LIMIT {data["count"]}""")
                     if (zap in m_end):
                         break
                     print(zap)
                     for el in zap:
                         tt = {
+                            "id": el[0],
                             "title": el[1],
                             "description": el[2],
                             "data": el[3],

@@ -18,5 +18,5 @@ def maps():
     print(request.remote_addr)
     # asd
     # jwts = tokin_service.generateTokins({"dq":'qwe'})
-    return render_template('swiper.html')
+    return render_template('swip.html')
 
