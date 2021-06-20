@@ -139,11 +139,13 @@ $(function() {
                             // console.log(masLog);
                             m_url = '/api/v0.1/post_user_history'
                             data = {
-                                'data': masLog
+                                'history': masLog
                             }
                             masLog = []
-                            sender(m_url, data)
+                                // sender(m_url, data)
+                            sender(m_url, data).then(data => {
 
+                            })
                         }
                         // localStorage.setItem('storage_hostory', masLog)
 
