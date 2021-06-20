@@ -89,6 +89,22 @@ db = {
 }
 
 
+@app.route('/api/v0.1/post_user_history', methods=['POST'])
+def post_user_history():
+    # asd
+    if(request.data):
+        data = json.loads(request.data.decode())
+        print("data", data)
+        for el in data['history']:
+            print(el)
+            fack = f"""INSERT INTO `history`(`id_user`, `id_slide`, `action`, `time`) \
+                VALUES ({el["id_user"]}, {el["id_slide"]}, {el["action"]}, '{el["time"]}')"""
+            print(fack)
+            post = DB.POST(fack)
+        return("True")
+    return('false')
+
+
 @app.route('/api/v0.1/get_slides', methods=['POST'])
 def get_slides():
     # asd
