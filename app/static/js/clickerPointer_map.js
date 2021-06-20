@@ -6,6 +6,8 @@ var slov = {
 }
 
 
+
+
 document.addEventListener('click', function() {
     // console.log('sslov', '');
     // console.log(this, arguments);
@@ -28,7 +30,6 @@ document.addEventListener('click', function() {
             console.log('ass');
             sig.classList.add('block_filter_active')
         }
-        // if (sig.classList)
     }
 
 

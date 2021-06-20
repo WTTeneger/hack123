@@ -1,3 +1,6 @@
+var masLog = []
+var masCount = 6
+
 function resize_back(obj) {
     // obj.style = ''
     obj = document.getElementsByClassName('main_block')
@@ -34,10 +37,10 @@ async function filling_blocks() {
 
             for (el in data['question']) {
                 el = data['question'][el]
-                    // console.log(el);
+                console.log(el);
 
                 qqee =
-                    `<div class="main_block" style='display:none' id='jobs_slide'>
+                    `<div class="main_block" style='display:none' ids ='${el['id']}' id='jobs_slide'>
                     <div class="sq">
                         <div class="pht">
                             <div class="buttons">
@@ -99,9 +102,26 @@ $(function() {
 
                 if (direction == 'left') {
                     document.getElementById('jobs_slide').style = 'transform: translateX(-100vw) scale(0.5)'
+                    els = {
+                            'id_user': 0,
+                            'id_slide': document.getElementById('jobs_slide').getAttribute('ids'),
+                            'action': 1,
+                            'time': Date.now()
+                        }
+                        // console.log(els);
+                    masLog.push(els)
                 }
                 if (direction == 'right') {
                     document.getElementById('jobs_slide').style = 'transform: translateX(100vw) scale(0.5)'
+                    els = {
+                            'id_user': 0,
+                            'id_slide': document.getElementById('jobs_slide').getAttribute('ids'),
+                            'action': 0,
+                            'time': Date.now()
+                        }
+                        // console.log(els);
+                    masLog.push(els)
+
                 }
 
                 if (direction == 'right' || direction == 'left') {
@@ -112,6 +132,20 @@ $(function() {
                         console.log('sqq');
                         tn = parseInt(new Date().getTime() / 1000)
                         filling_blocks()
+
+
+
+                        if (masLog.length >= masCount) {
+                            // console.log(masLog);
+                            m_url = '/api/v0.1/post_user_history'
+                            data = {
+                                'data': masLog
+                            }
+                            masLog = []
+                            sender(m_url, data)
+
+                        }
+                        // localStorage.setItem('storage_hostory', masLog)
 
                     }
 
